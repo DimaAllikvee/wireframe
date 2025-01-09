@@ -23,3 +23,6 @@ nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
     updateTestimonial(currentIndex);
 });
+
+
+
