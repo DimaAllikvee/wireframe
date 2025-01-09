@@ -24,18 +24,15 @@
         <section class="hero">
             <img src="imgs/zowie-mouse.jpg" alt="Zowie ZA13-DW" class="hero-image">
         </section>
+        
 
         <section class="video">
-          <iframe 
-              width="100%" 
-              height="500" 
-              src="https://www.youtube.com/embed/17FbYKO5D3I?si=0ehcR5Z2a8139g8Q" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-          </iframe>
-      </section>
+            <video controls width="100%" height="500">
+                <source src="videos/video ZOWIE.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        
       
         <section class="benefits">
             <div class="benefit">
@@ -53,15 +50,18 @@
         </section>
 
         <section class="testimonials">
-          <h2>Testimonials</h2>
-          <div class="testimonial-container">
-              <button class="prev">&larr;</button>
-              <div class="testimonial active">"The best gaming mouse I've ever used!"</div>
-              <div class="testimonial">"Perfect for FPS games."</div>
-              <div class="testimonial">"Great design and responsiveness."</div>
-              <button class="next">&rarr;</button>
-          </div>
-      </section>
+            <h2>Testimonials</h2>
+            <div class="testimonial-container">
+                <img src="imgs/user-icon.png" alt="User Icon" class="user-icon">
+                <p class="testimonial-text">"This is an amazing product! Highly recommend it to everyone."</p>
+            </div>
+            <div class="arrows">
+                <button class="prev">&larr;</button>
+                <button class="next">&rarr;</button>
+            </div>
+        </section>
+        
+        
       
       
       
@@ -82,14 +82,13 @@
         </section>
 
         <section class="signup">
-          <h2>Sign Up</h2>
-          <form action="#" method="post">
-              <div class="form-group">
-                  <input type="email" name="email" placeholder="Your email" required>
-                  <button type="submit">Submit</button>
-              </div>
-          </form>
-      </section>
+            <h2>Sign Up / Get Started</h2>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        
       
     </main>
 
@@ -98,6 +97,7 @@
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">Support</a>
+            <a href="#">Overview</a>
         </nav>
         <div class="social-media">
             <a href="#"><img src="icons/facebook.svg" alt="Social 1"></a>
