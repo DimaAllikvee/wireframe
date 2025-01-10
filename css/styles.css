@@ -14,6 +14,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 header {
@@ -357,13 +358,15 @@ footer {
 }
 
 .testimonial-text {
-    font-size: 35px;
+    font-size: 20px;
     color: var(--text-color);
     text-align: left;
-    margin-left: 500px;
+    display: inline; /* Текст в строку */
+    white-space: nowrap; /* Запрещает перенос текста */
+    margin-left: 300px;
     max-width: 700px;
     line-height: 1.8;
-    margin-right: 20px; /* Отступ справа */
+    margin-right: 90px; /* Отступ справа */
 }
 
 
