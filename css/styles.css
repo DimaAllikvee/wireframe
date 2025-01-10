@@ -91,7 +91,7 @@ header {
 
 .hero-image {
     width: 100%; /* Ширина 100% контейнера */
-    max-width: 1800px; /* Максимальная ширина */
+    max-width: 2000px; /* Максимальная ширина */
     height: 400px; /* Задаем фиксированную высоту */
     object-fit: cover; /* Устанавливаем, как изображение вписывается в заданную высоту */
     
@@ -105,20 +105,21 @@ header {
 
 /* Video Section */
 .video {
-    text-align: center;
-    
-    
+    width: 100%; /* Растягиваем секцию на всю ширину экрана */
+    max-width: 100vw; /* Ограничиваем ширину до окна браузера */
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+    overflow: hidden; /* Убираем прокрутку, если есть */
 }
 
-.video iframe {
-    width: 70%;
-    max-width: 1200px;
-    height: 350px;
-    
-    border-radius: 10px;
-    border: 4px solid var(--highlight-color);
-    box-shadow: 0 0 20px var(--highlight-color);
+.video video {
+    width: 100%; /* Растягиваем на всю ширину */
+    height: 500px; /* Устанавливаем фиксированную высоту */
+    object-fit: cover; /* Обрезает содержимое, чтобы заполнить блок */
+    border: none; /* Убираем рамки */
 }
+
+
 
 
 
@@ -333,14 +334,12 @@ footer {
 .testimonials {
     text-align: center;
     padding: 60px 20px;
-    
-    
 }
 
 .testimonial-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* Выравниваем по левому краю */
     position: relative;
     width: 100%;
     margin: 0 auto;
@@ -348,40 +347,53 @@ footer {
 }
 
 .user-icon {
-    width: 200px; /* Увеличена ширина и высота */
+    width: 200px;
     height: 200px;
     border-radius: 50%;
-    flex-shrink: 0; /* Запрещает уменьшение иконки */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-left: 200px; /* Отступ слева */
+    margin-right: 20px; /* Отступ справа */
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .testimonial-text {
-    font-size: 20px; /* Увеличен размер текста */
+    font-size: 35px;
     color: var(--text-color);
     text-align: left;
-    max-width: 700px; /* Ограничена ширина текста */
-    line-height: 1.8; /* Увеличено расстояние между строками */
+    margin-left: 500px;
+    max-width: 700px;
+    line-height: 1.8;
+    margin-right: 20px; /* Отступ справа */
 }
+
 
 /* Navigation Arrows */
-.arrows {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px; /* Увеличено расстояние сверху */
-    gap: 30px; /* Увеличен промежуток между стрелками */
-}
-
-button.prev, button.next {
+button.prev,
+button.next {
+    position: absolute;
+    top: 50%; /* Центрирование стрелок по вертикали */
+    transform: translateY(-50%); /* Смещение для идеального центрирования */
     background-color: transparent;
-    color: var(--primary-color);
     border: none;
-    font-size: 35px; /* Увеличен размер стрелок */
+    color: var(--primary-color);
+    font-size: 35px;
     cursor: pointer;
+    z-index: 1; /* Устанавливаем поверх всего */
 }
 
-button.prev:hover, button.next:hover {
-    color: #c50010;
+button.prev {
+    left: 10px; /* Расположение слева */
 }
+
+button.next {
+    right: 10px; /* Расположение справа */
+}
+
+button.prev:hover,
+button.next:hover {
+    color: #c50010; /* Цвет при наведении */
+}
+
 
 
 
@@ -441,16 +453,31 @@ button.prev:hover, button.next:hover {
 .slider-arrows {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-    gap: 30px;
+    position: absolute;
+    top: 60%; /* Опускаем стрелки чуть пониже */
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 button.prev-benefit, button.next-benefit {
     background: transparent;
     border: none;
     color: var(--primary-color);
-    font-size: 30px;
+    font-size: 20px; /* Уменьшение размера стрелок */
     cursor: pointer;
+    pointer-events: all;
+}
+
+button.prev-benefit {
+    position: absolute;
+    left: 10px;
+}
+
+button.next-benefit {
+    position: absolute;
+    right: 1px; /* Двигаем правую стрелку правее */
 }
 
 button.prev-benefit:hover, button.next-benefit:hover {
@@ -525,15 +552,18 @@ button.prev-benefit:hover, button.next-benefit:hover {
     }
 
     .video {
-        padding: 0; /* Убираем внутренние отступы у видео секции */
-        margin: 0; /* Убираем внешние отступы у видео секции */
+        width: 100%; /* Растягиваем секцию на всю ширину экрана */
+        max-width: 100vw; /* Ограничиваем ширину до окна браузера */
+        margin: 0; /* Убираем внешние отступы */
+        padding: 0; /* Убираем внутренние отступы */
+        overflow: hidden; /* Убираем прокрутку, если есть */
     }
-
-    .video iframe {
-        width: 100%; /* Видео занимает всю ширину экрана */
-        height: auto; /* Высота пропорционально адаптируется */
-        margin: 0; /* Убираем отступы у видео */
-        border-radius: 0; /* Убираем скругление углов */
+    
+    .video video {
+        width: 100%; /* Растягиваем на всю ширину */
+        height: 200px; /* Устанавливаем фиксированную высоту */
+        object-fit: cover; /* Обрезает содержимое, чтобы заполнить блок */
+        border: none; /* Убираем рамки */
     }
 
  
@@ -571,6 +601,7 @@ button.prev-benefit:hover, button.next-benefit:hover {
 
     .testimonials {
         padding: 20px;
+        
     }
 
     .testimonial-container {
@@ -582,20 +613,27 @@ button.prev-benefit:hover, button.next-benefit:hover {
     }
 
     .user-icon {
-        width: 150px; /* Уменьшение размера иконки */
-        height: 150px;
+        width: 100px; /* Уменьшение размера иконки */
+        height: 100px;
+        margin-left: 0;
+        margin-bottom: 20px;
+         
+        
         
     }
 
     .testimonial-text {
-        text-align: left; /* Текст выровнен по левому краю */
-        max-width: 700px; /* Ограничить ширину текста */
+        font-size: 15px;
+        
+        display: inline; /* Текст в строку */
+        white-space: nowrap; /* Запрещает перенос текста */
         color: var(--text-color);
-        line-height: 1.8; /* Межстрочный интервал для удобочитаемости */
+        line-height: 1; /* Межстрочный интервал */
         margin-top: 0; /* Убираем лишние отступы сверху */
-        padding-top: 45px;
-        padding-left: 10px;
+        padding-top: 25px;
+        padding-left: 50px;
     }
+    
 
     /* Signup Section */
 .signup {
@@ -691,5 +729,64 @@ footer {
 
 
 
+@media (max-width: 1024px) {
+    .testimonials {
+        padding: 20px;
+    }
+
+    .testimonial-container {
+        position: relative; /* Для позиционирования стрелок */
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .user-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .testimonial-text {
+        font-size: 16px; /* Размер текста */
+        white-space: normal; /* Разрешает перенос текста на новую строку */
+        text-align: left; /* Текст выравнен по левому краю */
+        color: var(--text-color);
+        line-height: 1.5; /* Межстрочный интервал */
+        margin: 0;
+        padding: 10px; /* Отступы вокруг текста */
+        flex-grow: 1;
+    }
+
+    
+    button.prev,
+    button.next {
+        position: absolute;
+        top: 50%; /* Центрирование по вертикали */
+        transform: translateY(-50%); /* Смещение для идеального центрирования */
+        background-color: transparent;
+        border: none;
+        color: var(--primary-color);
+        font-size: 20px; /* Уменьшение размера стрелок */
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    button.prev {
+        left: -20px; /* Расположение левее края экрана */
+    }
+
+    button.next {
+        right: 10px; /* Расположение справа */
+    }
+
+    button.prev:hover,
+    button.next:hover {
+        color: #c50010; /* Цвет при наведении */
+    }
+
+}
 
 
