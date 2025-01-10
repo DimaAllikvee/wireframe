@@ -1,4 +1,4 @@
-/* General Styles */
+
 :root {
     --primary-color: #e60012;
     --secondary-color: #222;
@@ -46,10 +46,9 @@ header {
 .login {
     padding: 15px 25px;
     border: unset;
-    border-radius: 15px;
-    color: #212121;
+    color: #ffffff;
     z-index: 1;
-    background: #e8e8e8;
+    background: #2d2828;
     position: relative;
     font-weight: 1000;
     font-size: 17px;
@@ -67,15 +66,15 @@ header {
     left: 0;
     height: 100%;
     width: 0;
-    border-radius: 15px;
-    background-color: #212121;
+
+    background-color: #d31717a8;
     z-index: -1;
-    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
     transition: all 250ms;
 }
 
 .login:hover {
-    color: #e8e8e8;
+    color: #fefefe;
 }
 
 .login:hover::before {
@@ -238,20 +237,18 @@ header {
 
 
 
-
 /* Signup Section */
 .signup {
     position: relative;
-    padding: 40px 20px;
-    width: 100%;
-    
- 
-    margin-left: 10px;
+    padding: 40px 10px;
+    width: calc(95% - 40px); /* Ширина с учетом отступов */
+    background-color: #222; /* Фон секции */
+    color: var(--text-color);
+    padding-bottom: 40px;
     margin: 0 auto;
-    
- 
-    
-   
+    margin-left: 40px; 
+    margin-bottom: 20px;
+    margin-right: 50px;
 }
 
 .signup h2 {
@@ -286,20 +283,20 @@ header {
 
 .signup button {
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: var(--primary-color);
     border: none;
-    border-radius: 5px;
-    color: var(--text-color);
+    color: var(--text-color);   
     cursor: pointer;
     font-weight: bold;
     align-self: flex-end; /* Кнопка выровнена по правому краю */
     transition: background-color 0.3s, transform 0.2s;
     margin-right: 95px; /* Отступ от правого края экрана */
+    width: 30%; /* Кнопка занимает всю ширину родителя */
 }
 
 .signup button:hover {
-    background-color: #c50010;
+    background-color: #c50010;  
     transform: translateY(-5px);
 }
 
@@ -343,11 +340,11 @@ footer {
 .testimonial-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px; 
-    max-width: 1000px; /
-    
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
 .user-icon {
@@ -423,14 +420,16 @@ button.prev:hover, button.next:hover {
 
 .slider-container {
     display: flex;
+    align-items: flex-start;
     overflow: hidden;
+    margin-top: 20px;
     
 }
 
 .slider-item {
     flex: 0 0 100%; /* Каждая карточка занимает весь экран */
     text-align: center;
-   
+    font-size: 25px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -559,7 +558,8 @@ button.prev-benefit:hover, button.next-benefit:hover {
         }
     
         .feature {
-            margin-right: 10px; /* Добавляем отступ справа */
+            margin-right: 10px;
+            margin-left: 20px; /* Добавляем отступ справа */
         }
     }
 
