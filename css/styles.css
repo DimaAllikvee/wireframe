@@ -55,7 +55,6 @@ header {
     font-size: 17px;
     box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     transition: all 250ms;
-    overflow: hidden;
     text-decoration: none;
     display: inline-block;
 }
@@ -792,4 +791,141 @@ footer {
 
 }
 
+#theme-toggle {
+    padding: 15px 25px; /* Внутренние отступы */
+    font-size: 17px; /* Размер текста */
+    font-weight: 1000; /* Толщина текста */
+    color: var(--text-color); /* Цвет текста */
+    background-color: var(--secondary-color); /* Фон кнопки */
+    border: none; /* Убираем рамку */
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); /* Тень */
+    position: relative; /* Для анимации фона */
+    cursor: pointer; /* Изменяем указатель мыши на "руку" */
+    overflow: hidden; /* Прячем анимацию за границей кнопки */
+    transition: transform 0.2s, background-color 0.3s; /* Плавные переходы */
+    margin-top: -180px; /* Поднимаем кнопку выше */
+}
 
+#theme-toggle {
+    padding: 15px 25px; /* Внутренние отступы */
+    border: unset; /* Убираем рамку */
+    color: #ffffff; /* Цвет текста */
+    z-index: 1; /* Поверх всего */
+    background: #2d2828; /* Фон */
+    position: relative; /* Для анимации фона */
+    font-weight: 1000; /* Толщина текста */
+    font-size: 17px; /* Размер текста */
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); /* Тень */
+    transition: all 250ms; /* Плавные переходы */
+    overflow: hidden; /* Прячем анимацию за границей кнопки */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    display: inline-block; /* Для корректного отображения */
+    cursor: pointer; /* Курсор "рука" при наведении */
+}
+
+#theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #d31717a8; /* Полупрозрачный акцент */
+    z-index: -1; /* За текстом */
+    box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27); /* Дополнительная тень */
+    transition: all 250ms; /* Анимация заливки */
+}
+
+#theme-toggle:hover {
+    color: #fefefe; /* Белый текст при наведении */
+}
+
+#theme-toggle:hover::before {
+    width: 100%; /* Заливка всей кнопки при наведении */
+}
+
+#theme-toggle:active {
+    transform: translateY(2px); /* Эффект нажатия */
+}
+
+
+
+/* ==== Модальное окно (скрыто по умолчанию) ==== */
+.modal {
+    display: none; /* Скрываем по умолчанию */
+    position: fixed; /* Фиксированное положение на экране */
+    z-index: 999; /* Поверх всех элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Прокрутка, если контента много */
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+  }
+  
+  /* ==== Контейнер содержимого модального окна ==== */
+  .modal-content {
+    background-color: #333;
+    margin: 10% auto; /* Отцентрируем по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px; /* Макс. ширина всплывающего окна */
+    position: relative; /* Для позиционирования кнопки закрытия */
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+  }
+  
+  /* ==== Кнопка (иконка) закрытия (крестик) ==== */
+  .close {
+    color: #aaa;
+    float: right; /* Расположить справа */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #fff;
+  }
+  
+  /* Внутренние элементы формы */
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .modal-content form label {
+    font-weight: 600;
+  }
+  
+  .modal-content form input[type="text"],
+  .modal-content form input[type="tel"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .modal-content form button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .modal-content form button:hover {
+    background-color: #c50010;
+  }
+  
