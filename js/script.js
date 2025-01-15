@@ -1,7 +1,10 @@
+// Отзывы
 const testimonials = [
     `"This is an amazing product! Highly recommend it to everyone."`,
     `"Great performance and design. Worth every penny!"`,
-    `"Perfect for gaming enthusiasts. A must-have accessory."`
+    `"Perfect for gaming enthusiasts. A must-have accessory."`,
+    `"Exceptional customer service and quality."`,
+    `"Highly functional and beautifully designed."`
 ];
 
 let currentIndex = 0;
@@ -10,21 +13,29 @@ const testimonialText = document.querySelector('.testimonial-text');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 
+// Функция обновления текста отзыва
 function updateTestimonial(index) {
     testimonialText.textContent = testimonials[index];
 }
 
+// Переключение на предыдущий отзыв
 prevButton.addEventListener('click', () => {
     currentIndex = (currentIndex === 0) ? testimonials.length - 1 : currentIndex - 1;
     updateTestimonial(currentIndex);
 });
 
+// Переключение на следующий отзыв
 nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
     updateTestimonial(currentIndex);
 });
 
+// Инициализация первого отзыва
+document.addEventListener('DOMContentLoaded', () => {
+    updateTestimonial(currentIndex);
+});
 
+// Переключатель темы
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
 
@@ -46,54 +57,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Проверка и обработка формы email
+document.addEventListener('DOMContentLoaded', () => {
+    const emailForm = document.getElementById('emailForm');
+    const emailInput = document.querySelector('input[name="email"]');
+    const errorMessage = document.getElementById('error-message');
+    const popup = document.getElementById('popup'); // Модальное окно
+    const closePopup = document.getElementById('close-popup'); // Кнопка закрытия модального окна
 
+    // Проверяем, что все элементы существуют
+    if (!emailForm || !emailInput || !errorMessage || !popup) {
+        console.error("Не удалось найти элементы формы или модального окна.");
+        return;
+    }
 
+    // Обработка отправки формы
+    emailForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Отключаем стандартное поведение формы
 
+        const emailValue = emailInput.value.trim();
 
+        // Если поле пустое
+        if (!emailValue) {
+            errorMessage.textContent = "Пожалуйста, введите адрес электронной почты!";
+            emailInput.classList.add("input-error");
+            return;
+        }
 
-// Получаем элементы по их ID
-const openPopupBtn = document.getElementById('open-popup'); // Кнопка Submit из секции signup
-const popup = document.getElementById('popup');             // Само модальное окно
-const closePopup = document.getElementById('close-popup');  // Крестик (span)
-const popupForm = document.getElementById('popup-form');    // Форма внутри попапа
+        // Проверка формата email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailValue)) {
+            errorMessage.textContent = "Пожалуйста, введите корректный адрес электронной почты!";
+            emailInput.classList.add("input-error");
+            return;
+        }
 
-// 1. При клике на кнопку "Submit" (в основной форме) – показываем попап
-openPopupBtn.addEventListener('click', function (event) {
-  event.preventDefault(); // Отменяем отправку формы, чтобы не перезагружать страницу
-  popup.style.display = 'block'; // Показываем модальное окно
+        // Если все проверки пройдены
+        errorMessage.textContent = ""; // Убираем сообщение об ошибке
+        emailInput.classList.remove("input-error");
+
+        // Показываем модальное окно
+        popup.style.display = 'block';
+    });
+
+    // Закрытие модального окна
+    if (closePopup) {
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    }
+
+    // Закрытие модального окна при клике вне области
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
 });
-
-// 2. При клике на крестик (close) – закрываем попап
-closePopup.addEventListener('click', function () {
-  popup.style.display = 'none'; 
-});
-
-// 3. Если кликнуть вне окна – тоже закрываем
-window.addEventListener('click', function (event) {
-  if (event.target === popup) {
-    popup.style.display = 'none';
-  }
-});
-
-// 4. Обработка формы внутри попапа
-popupForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  // Получаем значения полей
-  const nameValue = document.getElementById('name').value;
-  const telValue = document.getElementById('tel').value;
-
-  // Для примера: выводим в консоль, или отправляем AJAX-запрос
-  console.log('Name:', nameValue);
-  console.log('Tel:', telValue);
-
-  // После отправки/проверок можно скрыть попап
-  popup.style.display = 'none';
-
-  // Очистить поля, если нужно
-  popupForm.reset();
-});
-
-
-
 

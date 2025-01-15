@@ -758,7 +758,7 @@
         
         /* ==== Контейнер содержимого модального окна ==== */
         .modal-content {
-          background-color: #333;
+          background-color: #6f6464;
           margin: 10% auto; /* Отцентрируем по вертикали и горизонтали */
           padding: 20px;
           border: 1px solid #888;
