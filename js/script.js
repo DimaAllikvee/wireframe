@@ -57,61 +57,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Проверка и обработка формы email
-document.addEventListener('DOMContentLoaded', () => {
-    const emailForm = document.getElementById('emailForm');
-    const emailInput = document.querySelector('input[name="email"]');
-    const errorMessage = document.getElementById('error-message');
-    const popup = document.getElementById('popup'); // Модальное окно
-    const closePopup = document.getElementById('close-popup'); // Кнопка закрытия модального окна
+// Модальное окно
+const openPopupBtn = document.getElementById('open-popup'); // Кнопка Submit из секции signup
+const popup = document.getElementById('popup');             // Само модальное окно
+const closePopup = document.getElementById('close-popup');  // Крестик (span)
+const popupForm = document.getElementById('popup-form');    // Форма внутри попапа
 
-    // Проверяем, что все элементы существуют
-    if (!emailForm || !emailInput || !errorMessage || !popup) {
-        console.error("Не удалось найти элементы формы или модального окна.");
-        return;
-    }
-
-    // Обработка отправки формы
-    emailForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Отключаем стандартное поведение формы
-
-        const emailValue = emailInput.value.trim();
-
-        // Если поле пустое
-        if (!emailValue) {
-            errorMessage.textContent = "Пожалуйста, введите адрес электронной почты!";
-            emailInput.classList.add("input-error");
-            return;
-        }
-
-        // Проверка формата email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(emailValue)) {
-            errorMessage.textContent = "Пожалуйста, введите корректный адрес электронной почты!";
-            emailInput.classList.add("input-error");
-            return;
-        }
-
-        // Если все проверки пройдены
-        errorMessage.textContent = ""; // Убираем сообщение об ошибке
-        emailInput.classList.remove("input-error");
-
-        // Показываем модальное окно
-        popup.style.display = 'block';
-    });
-
-    // Закрытие модального окна
-    if (closePopup) {
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-    }
-
-    // Закрытие модального окна при клике вне области
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            popup.style.display = 'none';
-        }
-    });
+// Показ попапа при клике на кнопку "Submit"
+openPopupBtn.addEventListener('click', function (event) {
+  event.preventDefault(); // Отменяем отправку формы
+  popup.style.display = 'block'; // Показываем модальное окно
 });
+
+// Закрытие попапа при клике на крестик
+closePopup.addEventListener('click', function () {
+  popup.style.display = 'none'; 
+});
+
+// Закрытие попапа при клике вне области окна
+window.addEventListener('click', function (event) {
+  if (event.target === popup) {
+    popup.style.display = 'none';
+  }
+});
+
+// Обработка формы внутри попапа
+popupForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Получаем значения полей
+  const nameValue = document.getElementById('name').value.trim();
+  const telValue = document.getElementById('tel').value.trim();
+
+  // Проверяем на заполненность полей
+  if (!nameValue || !telValue) {
+    alert('Пожалуйста, заполните все поля!');
+    return;
+  }
+
+  // Для примера: выводим в консоль или отправляем AJAX-запрос
+  console.log('Имя:', nameValue);
+  console.log('Телефон:', telValue);
+
+  // После отправки формы скрываем попап
+  popup.style.display = 'none';
+
+  // Очистить поля формы
+  popupForm.reset();
+});
+
 
