@@ -9,7 +9,7 @@
 }
     
     body {
-    font-family: 'Jost', sans-serif; /* Определяет шрифт текста. */
+        font-family: 'Montserrat', sans-serif; /* Определяет шрифт текста. */
     margin: 0; /* Задает внешние отступы вокруг элемента. */
     padding: 0; /* Задает внутренние отступы внутри элемента. */
     background-color: var(--background-color); /* Устанавливает цвет фона элемента. */
@@ -941,7 +941,7 @@
     margin-bottom: 30px;
     font-size: 28px;
     color: var(--text-color);
-    text-shadow: 0 0 5px var(--highlight-color);
+    
 }
 
 /* Стили для каждой карточки */
@@ -1041,6 +1041,10 @@
         position: relative;
         overflow: hidden;         /* Скрываем «вылезающие» части при анимации */
         margin-bottom: 15px;
+    }
+
+    .mouse-cards h2 {
+        display: none;
     }
 }
 
