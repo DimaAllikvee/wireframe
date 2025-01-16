@@ -214,7 +214,7 @@
         flex-basis: 30%; /* Ширина каждого блока */
         padding: 30px; /* Внутренние отступы */
         background-color: #333; /* Фон блока */
-    margin-right: 20px; /* Описание этого свойства недоступно. */
+    margin-right: 30px; /* Описание этого свойства недоступно. */
         
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Тень блока */
         transition: transform 0.3s; /* Анимация при наведении */
@@ -590,7 +590,7 @@
             }
         
             .feature {
-    margin-right: 10px; /* Описание этого свойства недоступно. */
+    margin-right: -6px; /* Описание этого свойства недоступно. */
                 margin-left: 20px; /* Добавляем отступ справа */
             }
         }
@@ -957,7 +957,8 @@
 .mouse-cards {
     display: flex;               /* Размещаем карточки в ряд */
     justify-content: center;     /* Центрируем их по горизонтали */
-    gap: 20px;                   /* Расстояние между карточками */
+    gap: 39px;
+    margin-right: 45px;                   /* Расстояние между карточками */
     padding: 40px;               /* Внутренние отступы */
     flex-wrap: wrap;             /* По умолчанию разрешаем перенос */
     background-color: #1e1e1e
@@ -969,8 +970,9 @@
     flex: 1 1 250px;             /* Каждый блок тянется, минимальная ширина ~250px */
     max-width: 800px;            /* Можно ограничить максимальную ширину карточки */
     text-align: center;
+
     
-    margin: 10px;
+    margin: 8px;
 
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
@@ -995,12 +997,20 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;  /* Плавная анимация */
+    animation: pulse 3s infinite ease-in-out; /* Добавляем цикличную анимацию */
 }
 
-/* Увеличение при наведении на картинку */
-.card img:hover {
-    transform: scale(1.3);
+/* Анимация увеличения и возврата к исходному размеру */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Исходный размер */
+    }
+    30% {
+        transform: scale(1.2); /* Увеличение */
+    }
+    100% {
+        transform: scale(1); /* Возврат к исходному размеру */
+    }
 }
 
 /* Текст описания */
@@ -1010,27 +1020,30 @@
     line-height: 1.5;
 }
 
-/* --- Адаптация под мобильные устройства (уменьшаем карточки в одну строку) --- */
+/* --- Адаптация под мобильные устройства --- */
 @media (max-width: 768px) {
     .mouse-cards {
         flex-wrap: nowrap;         /* Запрещаем перенос */
         justify-content: space-around; 
+        padding: 20px; 
+        margin-left: 18px;
+        margin-right: 12px;            /* Уменьшаем отступы */
     }
     .card {
-        /* Фиксируем ширину каждой карточки, чтобы все умещались в одну линию */
-        
-        max-width: 28%;
-        margin: 1px;               /* Чуть уменьшим отступы */
+        max-width: 100%; /* Увеличиваем ширину карточки */
+        margin-right: 5px;
     }
 
     .card-image-container {
         margin: 0 auto;           /* Центрируем контейнер */
-        height: 100px;
+        height: 50px;
+        
         position: relative;
         overflow: hidden;         /* Скрываем «вылезающие» части при анимации */
         margin-bottom: 15px;
     }
 }
+
 
 /* ----- Общая обёртка карусели ----- */
 .carousel {
@@ -1084,4 +1097,5 @@
       height: 10px;
     }
   }
+  
   
